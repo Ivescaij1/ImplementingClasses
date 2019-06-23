@@ -74,7 +74,8 @@ class Point(object):
 
         import math
         self.number_of_moves = self.number_of_moves + 1
-        self.distance_traveled = self.distance_traveled + math.sqrt((moved_x - x_before_move) ** 2 + (moved_y - y_before_move) ** 2)
+        distance_this_move = math.sqrt((moved_x - x_before_move) ** 2 + (moved_y - y_before_move) ** 2)
+        self.distance_traveled = self.distance_traveled + distance_this_move
 
     def move_by(self, dx, dy):
         self.x = self.x + dx
@@ -82,7 +83,7 @@ class Point(object):
 
         import math
         self.number_of_moves = self.number_of_moves + 1
-        self.distance_traveled =  self.distance_traveled + math.sqrt(dx ** 2 + dy ** 2)
+        self.distance_traveled = self.distance_traveled + math.sqrt(dx ** 2 + dy ** 2)
 
     def get_number_of_moves_made(self):
         number_of_moves_made = self.number_of_moves
@@ -90,7 +91,7 @@ class Point(object):
 
     def get_distance_from(self, point):
         import math
-        distance_between_points = math.sqrt((self.x - point.x) ** 2 +(self.y - point.y) ** 2)
+        distance_between_points = math.sqrt((self.x - point.x) ** 2 + (self.y - point.y) ** 2)
         return distance_between_points
 
     def get_distance_from_start(self):
@@ -886,6 +887,7 @@ def run_test_get_distance_from_start():
     print()
     print('p2 from start to (1, 1), should be about 0.0')
     print('Actually is:', p2.get_distance_from_start())
+
 
 def run_test_get_distance_traveled():
     """
