@@ -54,6 +54,12 @@ class Point(object):
     def __repr__(self):
         return 'Point(' + str(self.x) + ', ' + str(self.y) + ')'
 
+    def clone(self):
+        new_x = self.x
+        new_y = self.y
+        new_point = Point(new_x, new_y)
+        return new_point
+
 
 def run_test_init():
     """
