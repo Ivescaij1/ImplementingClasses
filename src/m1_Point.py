@@ -45,6 +45,13 @@ def main():
 ########################################################################
 
 
+class Point(object):
+    """A two dimensional shape drawn as a dot"""
+    def __int__(self, x, y):
+        self.x = x
+        self.y = y
+
+
 def run_test_init():
     """
     Tests the   __init__   method of the Point class.
