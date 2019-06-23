@@ -60,6 +60,10 @@ class Point(object):
         new_point = Point(new_x, new_y)
         return new_point
 
+    def move_to(self, moved_x, moved_y):
+        self.x = moved_x
+        self.y = moved_y
+
 
 def run_test_init():
     """
@@ -376,13 +380,45 @@ def run_test_move_to():
             print('*** FAILED: This method should have had no value returned! ***')
     """
     # ------------------------------------------------------------------
-    # TODO: 6.  Follow the same instructions as in TO-DO 3 above,
+    # DONE: 6.  Follow the same instructions as in TO-DO 3 above,
     #           but for the  move_to  method specified above.
     # ------------------------------------------------------------------
     print()
     print('-----------------------------------------------------------')
     print('Testing the   move_to   method of the Point class.')
     print('-----------------------------------------------------------')
+
+    p1 = Point(10, 8)
+    p2 = Point(50, 20)
+    print()
+    print('Expected for p1: Point(10, 8)')
+    print('Actual for p1:  ', p1)
+    print('Expected for p2: Point(50, 20)')
+    print('Actual for p2:  ', p2)
+
+    p1.move_to(5, -1)
+    p2.move_to(0, 0)
+    print()
+    print('Expected for p1: Point(5, -1)')
+    print('Actual for p1:  ', p1)
+    print('Expected for p2: Point(0, 0)')
+    print('Actual for p2:  ', p2)
+
+    p2.y = 99
+    print()
+    print('Expected for p1: Point(5, -1)')
+    print('Actual for p1:  ', p1)
+    print('Expected for p2: Point(0, 99)')
+    print('Actual for p2:  ', p2)
+
+    check_has_no_return = p2.move_to(0, 222)
+    print()
+    print('Expected for p1: Point(5, -1)')
+    print('Actual for p1:  ', p1)
+    print('Expected for p2: Point(0, 222)')
+    print('Actual for p2:  ', p2)
+    if check_has_no_return is not None:
+        print('*** FAILED: This method should have had no value returned! ***')
 
 
 def run_test_move_by():
