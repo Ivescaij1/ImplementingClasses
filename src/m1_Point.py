@@ -76,7 +76,6 @@ class Point(object):
         self.number_of_moves = self.number_of_moves + 1
         self.distance_traveled = self.distance_traveled + math.sqrt((moved_x - x_before_move) ** 2 + (moved_y - y_before_move) ** 2)
 
-
     def move_by(self, dx, dy):
         self.x = self.x + dx
         self.y = self.y + dy
@@ -103,6 +102,14 @@ class Point(object):
         total_distance = self.distance_traveled
         return total_distance
 
+    def closer_to(self, point2, point3):
+        point2_distance = self.get_distance_from(point2)
+        point3_distance = self.get_distance_from(point3)
+
+        if point2_distance <= point3_distance:
+            return point2
+        else:
+            return point3
 
 
 def run_test_init():
@@ -1008,6 +1015,34 @@ def run_test_closer_to():
     print('-----------------------------------------------------------')
     print('Testing the   closer_to   method of the Point class.')
     print('-----------------------------------------------------------')
+
+    p1 = Point(10, 20)
+    p2 = Point(15, 20)
+    p3 = Point(14, 24)
+
+    print()
+    print('Expected:', p2)
+    print('Actual:  ', p1.closer_to(p2, p3))
+    print('Expected:', p2)
+    print('Actual:  ', p1.closer_to(p3, p2))
+
+    print()
+    print('Expected:', p1)
+    print('Actual:  ', p1.closer_to(p1, p3))
+    print('Expected:', p2)
+    print('Actual:  ', p2.closer_to(p3, p2))
+    print('Expected:', p3)
+    print('Actual:  ', p3.closer_to(p3, p3))
+
+    print()
+    p4 = p1.clone()
+    p5 = p1.clone()
+    print('Expected:', p4)
+    print('Actual:  ', p1.closer_to(p4, p5))
+    print('Expected: True')
+    print('Actual:  ', p1.closer_to(p4, p5) is p4)
+    print('Expected: False')
+    print('Actual:  ', p1.closer_to(p4, p5) is p5)
 
 
 def run_test_halfway_to():
